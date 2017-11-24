@@ -36,5 +36,9 @@ public class Note {
     public Date getDate() {
         return date;
     }
+
+    public int getId() {
+        return id;
+    }
     
 }

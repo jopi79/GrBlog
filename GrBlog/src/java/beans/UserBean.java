@@ -8,6 +8,7 @@ package beans;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -34,20 +35,30 @@ public class UserBean implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     private boolean logged;
-    public String login()
-    {
-        if("ala".equals(login))
-        {
+
+    public String login() {
+        if ("ala".equals(login)) {
             logged = true;
-            return "/private/index.xhtml";
+            return "/index.xhtml";
         }
         logged = false;
-        return "index";
+        return "/index";
     }
-    
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().
+                invalidateSession();
+        logged = false;
+        return "/index";
+    }
+
+    public boolean isLogged() {
+        return logged;
+    }
+
     public UserBean() {
     }
-    
+
 }

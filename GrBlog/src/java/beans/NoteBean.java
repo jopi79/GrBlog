@@ -22,6 +22,8 @@ import model.Note;
 public class NoteBean implements Serializable {
 
     private List<Note> notes;
+    private int id;
+    private Note note;
     
     @PostConstruct
     public void init()
@@ -33,6 +35,35 @@ public class NoteBean implements Serializable {
 
     public List<Note> getNotes() {
         return notes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+        this.note = find(id);
+    }
+    
+    public Note find(int id)
+    {
+        for(Note note : notes)
+        {
+            if(id==note.getId())
+            {
+                return note;
+            }
+        }
+        return null;
+    }
+
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
     }
     
     public NoteBean() {
