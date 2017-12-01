@@ -30,9 +30,12 @@
                     <ul>
                         <li><h:link value="Główna" outcome="/index" /></li>
                         <li><h:link value="Logowanie" outcome="/login" /></li>
-                        <li><h:link rendered="#{userBean.logged}"
-                                value="Nowy wpis" outcome="/private/new_note" /></li>
                     </ul>
+                    <h:panelGrid columns="1" rendered="#{userBean.logged}">
+                        
+                        <h:link value="Nowy wpis" outcome="/private/new_note" />
+                        
+                    </h:panelGrid>
                 </ui:insert>
             </div>
             <div>

@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import model.Comment;
 import model.Note;
 
 /**
@@ -29,8 +30,13 @@ public class NoteBean implements Serializable {
     public void init()
     {
         notes = new ArrayList();
-        notes.add(new Note("Jak zrobić dobre zdjęcie","Jak zrobić dobre zdjęcie"));
-        notes.add(new Note("Jaki kupić aparat","Jaki kupić aparat"));
+        Note note = new Note("Jak zrobić dobre zdjęcie","Jak zrobić dobre zdjęcie");
+        note.add(new Comment("ktos","Trochę mało treści"));
+        note.add(new Comment("aaa","Ciekawy wpis"));
+        note.add(new Comment("Ania","Ja robię ładne zdjęcia"));
+        notes.add(note);
+        Note note2 = new Note("Jaki kupić aparat","Jaki kupić aparat");
+        notes.add(note2);
     }
 
     public List<Note> getNotes() {
@@ -67,6 +73,10 @@ public class NoteBean implements Serializable {
     }
     
     public NoteBean() {
+    }
+
+    public void add(Note note) {
+        notes.add(note);
     }
     
 }

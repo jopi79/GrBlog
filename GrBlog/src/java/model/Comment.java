@@ -5,41 +5,32 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author Student
  */
-public class Note {
+public class Comment {
     private static int count = 0;
     private int id;
-    private String title;
+    private String signature;
     private String content;
     private Date date;
-    private List<Comment> comments;
 
-    public Note(String title, String content) {
-        this.title = title;
+    public Comment(String signature, String content) {
+        this.signature = signature;
         this.content = content;
         date = new Date();
         id = ++count;
-        comments = new ArrayList();
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-    
-    public void add(Comment comment)
-    {
-        comments.add(comment);
+    public int getId() {
+        return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getSignature() {
+        return signature;
     }
 
     public String getContent() {
@@ -49,9 +40,7 @@ public class Note {
     public Date getDate() {
         return date;
     }
-
-    public int getId() {
-        return id;
-    }
+    
+    
     
 }

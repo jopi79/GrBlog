@@ -7,6 +7,8 @@ package beans;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import model.Note;
 
 /**
  *
@@ -34,10 +36,15 @@ public class NewNoteBean {
         this.content = content;
     }
     
+    @Inject
+    private NoteBean noteBean;
+    public String save()
+    {
+        Note note = new Note(title,content);
+        noteBean.add(note);
+        return null;
+    }
     
-    /**
-     * Creates a new instance of NewNoteBean
-     */
     public NewNoteBean() {
     }
     
