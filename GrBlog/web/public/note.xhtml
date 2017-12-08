@@ -24,6 +24,15 @@
                         #{comment.signature}: #{comment.content}
                         <br/><br/>
                     </ui:repeat>
+                    <h:form>
+                        Twój komentarz:
+                        <h:inputTextarea value="#{newCommentBean.content}" />
+                        <br/>
+                        Podpis:
+                        <h:inputText value="#{newCommentBean.signature}" />
+                        <br/>
+                        <h:commandButton value="Wyślij" action="#{newCommentBean.add()}" />
+                    </h:form>
                 </h:panelGrid>
             </ui:define>
 

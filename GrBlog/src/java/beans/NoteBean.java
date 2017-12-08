@@ -79,4 +79,8 @@ public class NoteBean implements Serializable {
         notes.add(note);
     }
     
+    public void addComment(Comment c)
+    {
+        note.add(c);
+    }
 }
