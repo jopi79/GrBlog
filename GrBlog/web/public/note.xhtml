@@ -15,7 +15,8 @@
             <ui:define name="content">
                 <h:panelGrid>
                     <h3>#{noteBean.note.title}</h3>
-                    #{noteBean.note.content}
+                    <h:outputText value="#{noteBean.note.content}"
+                                  escape="false" />
                 </h:panelGrid>
                 
                 <h4>Komentarze</h4>

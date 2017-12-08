@@ -14,6 +14,7 @@ import java.util.List;
  * @author Student
  */
 public class Note {
+
     private static int count = 0;
     private int id;
     private String title;
@@ -32,9 +33,8 @@ public class Note {
     public List<Comment> getComments() {
         return comments;
     }
-    
-    public void add(Comment comment)
-    {
+
+    public void add(Comment comment) {
         comments.add(comment);
     }
 
@@ -53,5 +53,5 @@ public class Note {
     public int getId() {
         return id;
     }
-    
+
 }
