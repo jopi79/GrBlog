@@ -7,6 +7,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -54,4 +55,17 @@ public class Note {
         return id;
     }
 
+    public void delete(int commentId)
+    {
+        Iterator<Comment> i = comments.iterator();
+        while(i.hasNext())
+        {
+            Comment comment = i.next();
+            if(commentId==comment.getId())
+            {
+                i.remove();
+                return;
+            }
+        }
+    }
 }

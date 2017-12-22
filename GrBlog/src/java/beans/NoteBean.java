@@ -83,4 +83,9 @@ public class NoteBean implements Serializable {
     {
         note.add(c);
     }
+    
+    public void delete(int commentId)
+    {
+        note.delete(commentId);
+    }
 }
