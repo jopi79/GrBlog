@@ -14,43 +14,47 @@
         <ui:composition template="/templates/template.xhtml">
 
             <ui:define name="content">
-                <h3>#{noteBean.note.title}</h3>
-                <h:outputText value="#{noteBean.note.content}"
-                              escape="false" />
-                <p:panel header="Komentarze" id="comments"> 
-                    <ui:repeat value="#{noteBean.note.comments}" var="comment">
-                        <p:panelGrid columns="3">
-                            #{comment.signature}: #{comment.content}
+                <h:outputText rendered="#{noteBean.note==null}"
+                              value="Nie znaleziono" />
+                <h:panelGrid rendered="#{noteBean.note!=null}">
 
-                            <p:commandButton rendered="#{userBean.logged}"
-                                             value="Usuń" 
-                                             actionListener="#{noteBean.delete(comment.id)}" 
-                                             update=":comments">
-                                <p:confirm header="Potwierdzenie" 
-                                           message="Na pewno usunąć?" icon="ui-icon-alert" />
-                            </p:commandButton>
+                    <h3>#{noteBean.note.title}</h3>
+                    <h:outputText value="#{noteBean.note.content}"
+                                  escape="false" />
+                    <p:panel header="Komentarze" id="comments"> 
+                        <ui:repeat value="#{noteBean.note.comments}" var="comment">
+                            <p:panelGrid columns="3">
+                                #{comment.signature}: #{comment.content}
 
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
+                                <p:commandButton rendered="#{userBean.logged}"
+                                                 value="Usuń" 
+                                                 actionListener="#{noteBean.delete(comment.id)}" 
+                                                 update=":comments">
+                                    <p:confirm header="Potwierdzenie" 
+                                               message="Na pewno usunąć?" icon="ui-icon-alert" />
+                                </p:commandButton>
 
-                            
-                        </p:panelGrid>
-                    </ui:repeat>
-                </p:panel>
-                <p:panel header="Dodaj komentarz">
-                    <h:form>
-                        Twój komentarz:
-                        <h:inputTextarea value="#{newCommentBean.content}" />
-                        <br/>
-                        Podpis:
-                        <h:inputText value="#{newCommentBean.signature}" />
-                        <br/>
-                        <h:commandButton value="Wyślij" action="#{newCommentBean.add()}" />
-                    </h:form>
-                </p:panel>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
 
+
+                            </p:panelGrid>
+                        </ui:repeat>
+                    </p:panel>
+                    <p:panel header="Dodaj komentarz">
+                        <h:form>
+                            Twój komentarz:
+                            <h:inputTextarea value="#{newCommentBean.content}" />
+                            <br/>
+                            Podpis:
+                            <h:inputText value="#{newCommentBean.signature}" />
+                            <br/>
+                            <h:commandButton value="Wyślij" action="#{newCommentBean.add()}" />
+                        </h:form>
+                    </p:panel>
+                </h:panelGrid>
             </ui:define>
 
         </ui:composition>
