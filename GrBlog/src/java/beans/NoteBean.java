@@ -5,6 +5,8 @@
  */
 package beans;
 
+import dao.CommentDAO;
+import dao.NoteDAO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -29,6 +31,8 @@ public class NoteBean implements Serializable {
     @PostConstruct
     public void init()
     {
+        notes = NoteDAO.getNotes();
+        /*
         notes = new ArrayList();
         Note note = new Note("Jak zrobić dobre zdjęcie","Jak zrobić dobre zdjęcie");
         note.add(new Comment("ktos","Trochę mało treści"));
@@ -36,7 +40,7 @@ public class NoteBean implements Serializable {
         note.add(new Comment("Ania","Ja robię ładne zdjęcia"));
         notes.add(note);
         Note note2 = new Note("Jaki kupić aparat","Jaki kupić aparat");
-        notes.add(note2);
+        notes.add(note2);*/
     }
 
     public List<Note> getNotes() {
@@ -77,11 +81,14 @@ public class NoteBean implements Serializable {
 
     public void add(Note note) {
         notes.add(note);
+        NoteDAO.save(note);
     }
     
     public void addComment(Comment c)
     {
         note.add(c);
+        c.setNote(note);
+        CommentDAO.save(c);
     }
     
     public void delete(int commentId)

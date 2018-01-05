@@ -19,7 +19,7 @@ import utils.HibernateUtil;
  * @author Student
  */
 public class CommentDAO {
-    public List<Comment> getNotes()
+    public static List<Comment> getNotes()
     {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -31,7 +31,7 @@ public class CommentDAO {
             session.close();
         }
     }
-    public void save(Comment comment)
+    public static void save(Comment comment)
     {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();

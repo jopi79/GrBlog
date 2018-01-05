@@ -18,7 +18,7 @@ import utils.HibernateUtil;
  * @author Student
  */
 public class NoteDAO {
-    public List<Note> getNotes()
+    public static List<Note> getNotes()
     {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -30,7 +30,7 @@ public class NoteDAO {
             session.close();
         }
     }
-    public void save(Note note)
+    public static void save(Note note)
     {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();

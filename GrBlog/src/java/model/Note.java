@@ -35,6 +35,7 @@ public class Note implements Serializable {
     @SequenceGenerator(name = "Note_SEQ", sequenceName = "Note_SEQ")
     private int id;
     private String title;
+    
     private String content;
     
     @Column(name="add_date")
