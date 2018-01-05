@@ -82,6 +82,10 @@ public class Note implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void delete(int commentId)
     {
         Iterator<Comment> i = comments.iterator();
